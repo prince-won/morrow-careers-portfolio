@@ -4222,3 +4222,138 @@ body :is(h1, h2, h3, h4, h5, h6) {
     margin-top: 22px;
   }
 }
+
+/* Case Study final trim: clearer first impression and less repeated evidence. */
+@media (min-width: 901px) {
+  .case-v2-hero {
+    column-gap: 56px;
+    grid-template-rows: auto auto auto;
+    row-gap: 18px;
+  }
+
+  .case-v2-hero-copy {
+    display: contents;
+  }
+
+  .case-v2-hero-copy > .case-v2-kicker {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .case-v2-hero h1 {
+    font-size: clamp(54px, 5.2vw, 74px);
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .case-v2-hero-copy > p:last-child {
+    align-self: end;
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+  }
+
+  .case-v2-hero-meta {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+.case-v2-approach {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.case-v2-analytics-summary {
+  border-bottom: 1px solid var(--line-strong);
+  display: grid;
+  grid-template-columns: 0.78fr 0.78fr 1.55fr 0.89fr;
+  margin-top: 31px;
+}
+
+.case-v2-analytics-summary article {
+  border-top: 1px solid var(--line-strong);
+  min-height: 130px;
+  padding: 17px 20px 18px;
+}
+
+.case-v2-analytics-summary article:first-child {
+  padding-left: 0;
+}
+
+.case-v2-analytics-summary article + article {
+  border-left: 1px solid var(--line);
+}
+
+.case-v2-analytics-summary article > span {
+  color: var(--accent);
+  display: block;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.case-v2-analytics-summary article > strong {
+  display: block;
+  font-size: 31px;
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin-top: 19px;
+}
+
+.case-v2-analytics-summary article > p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 7px 0 0;
+}
+
+.case-v2-analytics-summary .case-v2-analytics-action > p {
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.55;
+  margin-top: 18px;
+  max-width: 390px;
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  .case-v2-analytics-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-v2-analytics-summary article:nth-child(3) {
+    border-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .case-v2-analytics-summary {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .case-v2-analytics-summary article,
+  .case-v2-analytics-summary article:first-child {
+    border-left: 0;
+    min-height: 0;
+    padding: 16px 0 18px;
+  }
+
+  .case-v2-analytics-summary article > strong {
+    font-size: 28px;
+    margin-top: 14px;
+  }
+
+  .case-v2-analytics-summary .case-v2-analytics-action > p {
+    font-size: 16px;
+    margin-top: 13px;
+  }
+}

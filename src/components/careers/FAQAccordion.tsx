@@ -43,7 +43,6 @@ export function FAQAccordion() {
           <p className="eyebrow">자주 묻는 질문</p>
           <h2 id="faq-title">지원 전에 궁금할 수 있는 내용을 정리했습니다.</h2>
         </div>
-        <p>지원 과정에서 자주 생기는 질문을 미리 확인할 수 있습니다.</p>
       </div>
 
       <div className="faq-list">

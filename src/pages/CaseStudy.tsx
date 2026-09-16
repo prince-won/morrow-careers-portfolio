@@ -1,8 +1,8 @@
 import { ArrowRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { candidates, getCandidateAlias } from "../data/candidates";
-import { bottleneckInsight, sourcePerformance } from "../data/analytics";
-import { hiringJourney, candidatePromises } from "../data/hiringProcess";
+import { bottleneckInsight } from "../data/analytics";
+import { hiringJourney } from "../data/hiringProcess";
 import { productManagerJob } from "../data/jobs";
 import { hiringStepLabels } from "../data/labels";
 
@@ -44,8 +44,6 @@ const designPrinciples = [
 
 const c018 = candidates.find((candidate) => candidate.id === "C-018")!;
 const c018Evaluation = c018.evaluation!;
-const referralMetric = sourcePerformance.find((source) => source.source === "Referral")!;
-const careerSiteMetric = sourcePerformance.find((source) => source.source === "Career Site")!;
 const selectedCriteria = c018.criteria.filter((criterion) => evaluationCriteria.includes(criterion.name));
 
 function CompactFlow({ items, className = "" }: { items: string[]; className?: string }) {
@@ -68,16 +66,6 @@ function SectionHeading({ label, title, description, headingId }: { label: strin
       <h2 id={headingId}>{title}</h2>
       {description ? <p>{description}</p> : null}
     </header>
-  );
-}
-
-function MetricLine({ label, value, detail }: { label: string; value: string; detail: string }) {
-  return (
-    <article className="case-v2-metric-line">
-      <span>{label}</span>
-      <strong>{value}</strong>
-      <p>{detail}</p>
-    </article>
   );
 }
 
@@ -169,11 +157,6 @@ export function CaseStudy() {
             </article>
           ))}
         </div>
-        <div className="case-v2-promises">
-          <p className="case-v2-label">지원자 약속</p>
-          <div>{candidatePromises.map((promise) => <strong key={promise.number}>{promise.title}</strong>)}</div>
-        </div>
-        <Link className="case-v2-link" to="/process">채용 과정 자세히 보기 <ArrowRight size={16} aria-hidden="true" /></Link>
       </section>
 
       <section className="case-v2-section case-v2-operation" aria-labelledby="operation-title">
@@ -213,21 +196,28 @@ export function CaseStudy() {
         <SectionHeading
           label="채용 분석"
           title="채용 데이터를 다음 실행으로 연결합니다."
-          description="판단으로 이어진 핵심 신호만 남겼습니다."
           headingId="analytics-title"
         />
-        <div className="case-v2-metrics">
-          <MetricLine label="임직원 추천" value={`${referralMetric.applied} 지원`} detail={`${referralMetric.interviewed} 면접 → ${referralMetric.hired} 채용`} />
-          <MetricLine label="Career Site" value={`${careerSiteMetric.applied} 지원`} detail={`${careerSiteMetric.interviewed} 면접 → ${careerSiteMetric.hired} 채용`} />
-          <MetricLine label="Engineering Time to Hire" value={`${bottleneckInsight.totalDays}일`} detail="채용 소요 기간" />
-          <MetricLine label="Interview Scheduling" value={`${bottleneckInsight.stageDays}일`} detail="현재 가장 긴 단일 단계" />
-        </div>
-        <div className="case-v2-thinking">
-          <div><span>데이터</span><strong>엔지니어링 채용 소요 기간 {bottleneckInsight.totalDays}일</strong></div>
-          <div><span>관찰</span><p>면접 일정 조율 {bottleneckInsight.stageDays}일. 현재 가장 긴 단일 단계입니다.</p></div>
-          <div><span>가설</span><p>수동 일정 조율이 Lead Time 증가에 영향을 주고 있을 가능성이 있습니다.</p></div>
-          <div className="case-v2-thinking-wide"><span>개선안</span><ul><li>면접관 가능 시간 사전 등록</li><li>후보자가 직접 가능한 시간 선택</li></ul></div>
-          <div><span>측정 지표</span><p>평균 면접 일정 조율 시간 <strong>10일 → 목표 5일 미만</strong></p></div>
+        <div className="case-v2-analytics-summary">
+          <article>
+            <span>전체 소요 기간</span>
+            <strong>{bottleneckInsight.totalDays}일</strong>
+            <p>엔지니어링 채용</p>
+          </article>
+          <article>
+            <span>확인한 병목</span>
+            <strong>{bottleneckInsight.stageDays}일</strong>
+            <p>면접 일정 조율</p>
+          </article>
+          <article className="case-v2-analytics-action">
+            <span>다음 실험</span>
+            <p>면접관 가능 시간 사전 등록 · 후보자 선택형 시간 슬롯</p>
+          </article>
+          <article>
+            <span>성공 기준</span>
+            <strong>5일 미만</strong>
+            <p>평균 일정 조율 시간</p>
+          </article>
         </div>
         <Link className="case-v2-link" to="/recruiter/analytics">채용 분석 자세히 보기 <ArrowRight size={16} aria-hidden="true" /></Link>
       </section>
