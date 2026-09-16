@@ -47,6 +47,19 @@ export function HiringProcess() {
         </ol>
       </section>
 
+      <section className="process-media-section" aria-labelledby="process-media-title">
+        <figure className="process-media">
+          <img src="/images/morrow-interview-room.png" alt="면접을 앞두고 준비된 Morrow의 미팅 공간" loading="lazy" />
+          <figcaption>대화를 시작하기 전, 필요한 정보를 먼저 준비합니다.</figcaption>
+        </figure>
+        <div className="process-media-copy">
+          <p className="eyebrow">지원자 경험</p>
+          <span className="process-media-rule" aria-hidden="true" />
+          <h2 id="process-media-title">다음 단계를<br />미리 안내합니다.</h2>
+          <p>모든 지원자가 채용 여정을 예측할 수 있도록 각 전형의 목적과 일정을 투명하게 안내합니다.</p>
+        </div>
+      </section>
+
       <section className="promise-section" aria-labelledby="promise-title">
         <div className="process-section-heading promise-heading">
           <div>

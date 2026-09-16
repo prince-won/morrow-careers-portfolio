@@ -32,22 +32,23 @@ export function CareersHome() {
       <section className="home-hero">
         <div className="home-hero-copy">
           <p className="eyebrow">Careers at Morrow</p>
-          <h1>Make tomorrow<br /><em>worth working for.</em></h1>
+          <h1><span>Make tomorrow</span><br /><em>worth working for.</em></h1>
           <p className="home-hero-description">더 나은 일의 방식을 만드는 사람들을 찾습니다.</p>
           <Link className="primary-button" to="/jobs">
             채용 중인 포지션 보기 <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
           </Link>
         </div>
         <div className="home-hero-aside">
-          <figure className="home-hero-aside-media">
-            <img src="/images/morrow-careers-hero.png" alt="Morrow 팀이 함께 일하는 따뜻한 작업 공간" />
+          <figure className="home-hero-media">
+            <img src="/images/morrow-careers-collaboration.png" alt="Morrow 팀이 노트북을 보며 함께 제품을 논의하는 모습" />
+            <figcaption className="home-hero-media-caption">
+              <span>Morrow / 2026</span>
+              <span>함께 문제를 정의하고, 더 나은 다음을 만듭니다.</span>
+            </figcaption>
           </figure>
-          <div className="home-hero-aside-copy">
-          <p className="aside-label">Morrow / 2026</p>
-          <p>개인과 팀이 업무와 일상을 더 잘 관리할 수 있도록 돕는 Productivity Platform을 만들고 있습니다.</p>
-          <span className="aside-rule" aria-hidden="true" />
-          <p className="aside-meta">의도적으로 성장하는 팀<br />서울 · B2C Productivity / SaaS</p>
-          <Link className="aside-link" to="/process">채용 과정 보기 <ArrowRight size={15} aria-hidden="true" /></Link>
+          <div className="home-hero-aside-footer">
+            <span>서울 · B2C Productivity / SaaS</span>
+            <Link className="aside-link" to="/process">채용 과정 보기 <ArrowRight size={15} aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
