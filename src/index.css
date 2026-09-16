@@ -3803,3 +3803,177 @@ body :is(h1, h2, h3, h4, h5, h6) {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Image system for Careers Home: four calm, framed moments support the story without competing with it. */
+.home-hero-aside {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.home-hero-aside-media,
+.home-company-media,
+.featured-visual,
+.home-closing-media {
+  margin: 0;
+  overflow: hidden;
+}
+
+.home-hero-aside-media {
+  background: var(--surface-warm);
+  height: 148px;
+}
+
+.home-hero-aside-media img,
+.home-company-media img,
+.featured-visual img,
+.home-closing-media img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.home-hero-aside-media img {
+  object-position: 68% center;
+}
+
+.home-hero-aside-copy {
+  padding: 18px 20px 20px;
+}
+
+.home-hero-aside-copy .aside-label {
+  margin-bottom: 18px;
+}
+
+.home-hero-aside-copy .aside-rule {
+  margin: 26px 0 16px;
+}
+
+.home-company-showcase {
+  align-items: stretch;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  margin-top: 55px;
+}
+
+.home-company-showcase .team-list {
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-surface);
+  margin-top: 0;
+  padding: 0 24px;
+}
+
+.home-company-media {
+  background: var(--surface-warm);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-surface);
+  min-height: 360px;
+  position: relative;
+}
+
+.home-company-media img {
+  object-position: 67% center;
+}
+
+.home-company-media figcaption,
+.featured-visual figcaption {
+  background: rgb(37 38 33 / 0.82);
+  bottom: 0;
+  color: var(--paper);
+  font-size: 13px;
+  left: 0;
+  line-height: 1.45;
+  padding: 10px 13px 11px;
+  position: absolute;
+  right: 0;
+}
+
+.featured-visual {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-surface);
+  height: 236px;
+  margin-top: 46px;
+  position: relative;
+}
+
+.featured-visual img {
+  object-position: center 58%;
+}
+
+.home-closing-cta {
+  align-items: center;
+  display: grid;
+  gap: 52px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(330px, 1.1fr);
+}
+
+.home-closing-copy h2 {
+  margin-bottom: 33px;
+}
+
+.home-closing-media {
+  aspect-ratio: 16 / 7;
+  background: var(--surface-warm);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-surface);
+}
+
+.home-closing-media img {
+  object-position: center center;
+}
+
+@media (max-width: 820px) {
+  .home-hero-aside {
+    max-width: 340px;
+  }
+
+  .home-company-showcase {
+    display: block;
+    margin-top: 38px;
+  }
+
+  .home-company-media {
+    margin-top: 12px;
+    min-height: 250px;
+  }
+
+  .featured-visual {
+    height: 210px;
+    margin-top: 34px;
+  }
+
+  .home-closing-cta {
+    display: block;
+  }
+
+  .home-closing-media {
+    aspect-ratio: 4 / 3;
+    margin-top: 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-hero-aside-copy {
+    padding: 17px 18px 19px;
+  }
+
+  .home-hero-aside-media {
+    height: 142px;
+  }
+
+  .home-company-showcase .team-list {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .home-company-media {
+    min-height: 225px;
+  }
+
+  .featured-visual {
+    height: 192px;
+  }
+}
