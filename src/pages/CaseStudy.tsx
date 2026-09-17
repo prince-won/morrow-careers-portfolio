@@ -124,6 +124,7 @@ export function CaseStudy() {
         <SectionHeading
           label="지원자 경험"
           title="지원자가 다음 단계를 예측할 수 있게 합니다."
+          description="포지션 탐색부터 JD, 지원서 작성, 채용 과정과 FAQ까지 하나의 Candidate Journey로 연결했습니다."
           headingId="experience-title"
         />
         <div className="case-v2-journey">

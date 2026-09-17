@@ -18,6 +18,7 @@ export function JobDetail() {
           <p className="eyebrow">{departmentLabels[job.department]} / {employmentTypeLabels[job.employmentType]}</p>
           <h1>{job.title}</h1>
           <p className="job-detail-summary">{job.summary}</p>
+          <Link className="primary-button job-apply-button" to={`/jobs/${job.slug}/apply`}>지원하기 <ArrowRight size={17} aria-hidden="true" /></Link>
         </div>
         <div className="job-detail-meta" aria-label="포지션 상세 정보">
           <span>{formatExperience(job.experience)}</span>
@@ -73,6 +74,7 @@ export function JobDetail() {
               </div>
             </section>
           </div>
+          <Link className="job-detail-apply-secondary" to={`/jobs/${job.slug}/apply`}>이 포지션에 지원하기 <ArrowRight size={16} aria-hidden="true" /></Link>
         </main>
 
         <aside className="job-detail-sidebar">

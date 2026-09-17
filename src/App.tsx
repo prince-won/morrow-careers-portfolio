@@ -3,6 +3,7 @@ import { CandidateLayout } from "./layouts/CandidateLayout";
 import { RecruiterLayout } from "./layouts/RecruiterLayout";
 import { CareersHome } from "./pages/CareersHome";
 import { CaseStudy } from "./pages/CaseStudy";
+import { ApplyPage } from "./pages/ApplyPage";
 import { JobDetail } from "./pages/JobDetail";
 import { Jobs } from "./pages/Jobs";
 import { HiringProcess } from "./pages/HiringProcess";
@@ -22,6 +23,7 @@ function App() {
           path="jobs"
           element={<Jobs />}
         />
+        <Route path="jobs/:slug/apply" element={<ApplyPage />} />
         <Route path="jobs/:slug" element={<JobDetail />} />
         <Route
           path="process"

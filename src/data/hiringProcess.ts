@@ -15,7 +15,7 @@ export const hiringJourney: HiringJourneyStep[] = [
   {
     number: "01",
     title: "Application",
-    description: "지원 즉시 접수 완료 안내",
+    description: "포지션 상세에서 지원서를 작성하고, 지원 즉시 접수 완료 안내를 받습니다.",
   },
   {
     number: "02",
