@@ -131,7 +131,7 @@ export function Analytics() {
     <div className="analytics-page">
       <header className="analytics-hero">
         <p className="eyebrow">채용 담당자 화면 / 분석</p>
-        <h1>Turn recruiting data into better decisions.</h1>
+        <h1>채용 데이터를 바탕으로 채용 과정을 개선합니다.</h1>
         <p className="analytics-hero-description">채용 결과를 집계하는 데서 멈추지 않고, 어디에서 다음 개선이 필요한지 확인합니다.</p>
       </header>
 

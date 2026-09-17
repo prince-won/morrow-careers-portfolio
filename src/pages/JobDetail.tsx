@@ -1,10 +1,13 @@
 import { ArrowLeft, ArrowRight, Check, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
-import { productManagerJob } from "../data/jobs";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { jobs } from "../data/jobs";
 import { departmentLabels, employmentTypeLabels, formatExperience, hiringStepLabels } from "../data/labels";
 
 export function JobDetail() {
-  const job = productManagerJob;
+  const { slug } = useParams<{ slug: string }>();
+  const job = jobs.find((candidateJob) => candidateJob.slug === slug);
+
+  if (!job) return <Navigate to="/jobs" replace />;
 
   return (
     <div className="job-detail-page">
@@ -18,7 +21,7 @@ export function JobDetail() {
         </div>
         <div className="job-detail-meta" aria-label="포지션 상세 정보">
           <span>{formatExperience(job.experience)}</span>
-          <span><MapPin size={15} aria-hidden="true" />서울</span>
+          <span><MapPin size={15} aria-hidden="true" />{job.location}</span>
         </div>
       </header>
 

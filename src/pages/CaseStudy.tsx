@@ -1,7 +1,5 @@
 import { ArrowRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
-import { candidates, getCandidateAlias } from "../data/candidates";
-import { bottleneckInsight } from "../data/analytics";
 import { hiringJourney } from "../data/hiringProcess";
 import { productManagerJob } from "../data/jobs";
 import { hiringStepLabels } from "../data/labels";
@@ -22,15 +20,6 @@ const representativeQuestions = [
   { label: "Success", question: "6개월 후 성공 기준은 무엇인가?" },
 ];
 
-const pipelineStages = [
-  { key: "applied", label: "지원" },
-  { key: "screening", label: "서류 검토" },
-  { key: "interview", label: "면접" },
-  { key: "final", label: "최종" },
-  { key: "offer", label: "오퍼" },
-] as const;
-
-const evaluationCriteria = ["Product Experience", "Data Literacy", "Collaboration"];
 const candidateViewFlow = ["채용 포지션", "JD", "채용 과정"];
 const recruiterViewFlow = ["개요", "파이프라인", "평가", "분석"];
 const gamePlanningFlow = ["문제 정의", "요구 사항 설계", "협업", "운영", "데이터 분석", "개선"];
@@ -41,10 +30,6 @@ const designPrinciples = [
   { title: "점수보다 근거", description: "사람을 하나의 숫자로 축약하지 않습니다." },
   { title: "대시보드보다 다음 판단", description: "지표를 다음 실행으로 연결합니다." },
 ];
-
-const c018 = candidates.find((candidate) => candidate.id === "C-018")!;
-const c018Evaluation = c018.evaluation!;
-const selectedCriteria = c018.criteria.filter((criterion) => evaluationCriteria.includes(criterion.name));
 
 function CompactFlow({ items, className = "" }: { items: string[]; className?: string }) {
   return (
@@ -88,8 +73,7 @@ export function CaseStudy() {
       <section className="case-v2-section case-v2-context" aria-labelledby="context-title">
         <SectionHeading
           label="프로젝트 맥락"
-          title="채용의 문제를 하나의 시스템으로 바라봤습니다."
-          description="직무 정의부터 분석까지 필요한 판단의 순서를 설계했습니다."
+          title="채용을 하나의 시스템으로 바라봤습니다."
           headingId="context-title"
         />
         <div className="case-v2-context-grid">
@@ -107,12 +91,6 @@ export function CaseStudy() {
             <p className="case-v2-label">접근 방식</p>
             <CompactFlow items={approachFlow} className="case-v2-flow-approach" />
           </article>
-        </div>
-        <div className="case-v2-problems">
-          <article><span>01</span><div><h3>직무 정의</h3><p>JD가 직군별로 일관되지 않습니다.</p></div></article>
-          <article><span>02</span><div><h3>진행 가시성</h3><p>현재 채용 단계와 다음 실행을 빠르게 확인하기 어렵습니다.</p></div></article>
-          <article><span>03</span><div><h3>지원자 경험</h3><p>담당자마다 연락 시점과 결과 안내 방식이 다릅니다.</p></div></article>
-          <article><span>04</span><div><h3>채용 분석</h3><p>유입 경로와 단계별 차이를 운영 개선으로 연결하지 못합니다.</p></div></article>
         </div>
       </section>
 
@@ -157,69 +135,6 @@ export function CaseStudy() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="case-v2-section case-v2-operation" aria-labelledby="operation-title">
-        <SectionHeading
-          label="채용 운영"
-          title="채용 진행과 판단 기준을 한 화면에 둡니다."
-          headingId="operation-title"
-        />
-        <div className="case-v2-pipeline" aria-label="채용 파이프라인">
-          {pipelineStages.map((stage, index) => (
-            <div key={stage.key}>
-              <span>{stage.label}</span>
-              <strong>{candidates.filter((candidate) => candidate.stage === stage.key).length}</strong>
-              {index < pipelineStages.length - 1 ? <i aria-hidden="true">→</i> : null}
-            </div>
-          ))}
-        </div>
-        <div className="case-v2-evaluation-grid">
-          <article className="case-v2-criteria">
-            <p className="case-v2-label">{getCandidateAlias(c018)} 대표 평가</p>
-            <h3>Criteria → Evidence → Decision</h3>
-            <div className="case-v2-criteria-list">
-              {selectedCriteria.map((criterion) => <div key={criterion.name}><strong>{criterion.name}</strong><span>{criterion.evidence}</span></div>)}
-            </div>
-          </article>
-          <article className="case-v2-evaluation-note">
-            <p className="case-v2-label">근거와 판단</p>
-            <p>{c018Evaluation.evidence}</p>
-            <p className="case-v2-concern"><span>우려 사항</span>{c018Evaluation.concern}</p>
-            <div><span>판단</span><strong>진행</strong></div>
-          </article>
-        </div>
-        <Link className="case-v2-link" to="/recruiter/pipeline">파이프라인 자세히 보기 <ArrowRight size={16} aria-hidden="true" /></Link>
-      </section>
-
-      <section className="case-v2-section case-v2-analytics" aria-labelledby="analytics-title">
-        <SectionHeading
-          label="채용 분석"
-          title="채용 데이터를 다음 실행으로 연결합니다."
-          headingId="analytics-title"
-        />
-        <div className="case-v2-analytics-summary">
-          <article>
-            <span>전체 소요 기간</span>
-            <strong>{bottleneckInsight.totalDays}일</strong>
-            <p>엔지니어링 채용</p>
-          </article>
-          <article>
-            <span>확인한 병목</span>
-            <strong>{bottleneckInsight.stageDays}일</strong>
-            <p>면접 일정 조율</p>
-          </article>
-          <article className="case-v2-analytics-action">
-            <span>다음 실험</span>
-            <p>면접관 가능 시간 사전 등록 · 후보자 선택형 시간 슬롯</p>
-          </article>
-          <article>
-            <span>성공 기준</span>
-            <strong>5일 미만</strong>
-            <p>평균 일정 조율 시간</p>
-          </article>
-        </div>
-        <Link className="case-v2-link" to="/recruiter/analytics">채용 분석 자세히 보기 <ArrowRight size={16} aria-hidden="true" /></Link>
       </section>
 
       <section className="case-v2-section case-v2-perspectives" aria-labelledby="perspective-title">
